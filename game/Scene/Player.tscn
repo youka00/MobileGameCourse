@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://xyqcb38cqq21"]
+
+[ext_resource type="Script" path="res://Script/Player.cs" id="1_mcuav"]
+[ext_resource type="Texture2D" uid="uid://dywqbw04otkuq" path="res://icon.svg" id="2_0neyw"]
+[ext_resource type="Script" path="res://Script/Person.cs" id="3_yhvq4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g6mv"]
+size = Vector2(56.6953, 61.7204)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uaxvo"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
+scale = Vector2(0.263981, 0.237841)
+script = ExtResource("1_mcuav")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0neyw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.23223, 0.999996)
+rotation = -3.14159
+scale = Vector2(2.21422, -1.97666)
+shape = SubResource("RectangleShape2D_6g6mv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="InteractionArea" type="Area2D" parent="."]
+scale = Vector2(-9.39139, 8.4048)
+script = ExtResource("3_yhvq4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_uaxvo")
+
+[node name="ProgressUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="ProgressUI"]
+layout_mode = 0
+offset_left = -60.6104
+offset_top = -168.18
+offset_right = 60.3896
+offset_bottom = -137.18

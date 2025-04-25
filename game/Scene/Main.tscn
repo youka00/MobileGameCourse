@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvkcoy4tkkoke"]
+
+[ext_resource type="PackedScene" uid="uid://c8g0k4thvhye1" path="res://Scene/floor.tscn" id="1_t2ghb"]
+[ext_resource type="Script" path="res://Script/GameManager.cs" id="1_x0nw2"]
+[ext_resource type="PackedScene" uid="uid://xyqcb38cqq21" path="res://Scene/Player.tscn" id="2_ckrel"]
+[ext_resource type="PackedScene" uid="uid://dft83kr3h7nv4" path="res://Scene/datacomputer.tscn" id="3_ovpdf"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_x0nw2")
+
+[node name="floor" parent="." instance=ExtResource("1_t2ghb")]
+
+[node name="Sprite2D" parent="floor" index="0"]
+position = Vector2(0, 0)
+
+[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("CollectionProgress") instance=ExtResource("2_ckrel")]
+top_level = true
+CollectionProgress = NodePath("ProgressUI/ProgressBar")
+
+[node name="Camera2D" parent="CharacterBody2D" index="2"]
+zoom = Vector2(1.8, 1.8)
+
+[node name="InteractionArea" parent="CharacterBody2D" index="3"]
+DisableTime = 2.0
+
+[node name="Area2D" parent="." node_paths=PackedStringArray("Screen") instance=ExtResource("3_ovpdf")]
+position = Vector2(-275, -45)
+Screen = NodePath("Screen")
+
+[editable path="floor"]
+[editable path="CharacterBody2D"]
+[editable path="Area2D"]
